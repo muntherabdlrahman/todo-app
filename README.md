@@ -1,10 +1,10 @@
-todo-app
+# Todo-app
 
 
 
 
-Run:
-npm start
+### Run:
+> npm start
 
-UML
+### UML
 ![img](src/img/Capture.PNG)
