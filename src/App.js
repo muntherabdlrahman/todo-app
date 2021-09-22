@@ -1,14 +1,29 @@
-import React from "react";
-import Header from "./components/header/header";
-import TODO from "./components/todo/todo";
-import SettingsContext from "./components/todo/context/context";
+import React, { useContext } from "react";
+import ToDo from "./components/todo/ToDo";
+import SettingsContext from "./context/settings";
+import Auth, { AuthContext } from "./context/auth";
+import { If, Else, Then } from "react-if";
+import "./App.css";
+import Sign from "./components/sign/sign";
+
 function App() {
+  const { loggedIn } = useContext(AuthContext);
   return (
     <>
-      <SettingsContext>
-        <Header />
-        <TODO />
-      </SettingsContext>
+      <Auth>
+        
+        <If condition={loggedIn === true}>
+          {console.log("from app comp",loggedIn)}
+          <Then>
+            <SettingsContext>
+              <ToDo />
+            </SettingsContext>
+          </Then>
+          <Else>
+            <Sign />
+          </Else>
+        </If>
+      </Auth>
     </>
   );
 }
